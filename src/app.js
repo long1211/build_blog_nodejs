@@ -6,7 +6,8 @@ const bodyParser = require("body-parser")
 const port = 4444
 
 // Setup Routes
-const indexRoutes = require("./routes/index.routes")
+const indexRoutes = require("../src/routes/index.routes")
+const adminRoutes = require("../src/routes/admin.routes")
 
 // View engine setup
 app.set('view engine', 'pug')
@@ -30,6 +31,7 @@ app.use(bodyParser.urlencoded({
 
 // Run router
 app.use(indexRoutes)
+app.use('/admin', adminRoutes)
 
 app.listen(port, () => {
     console.log(`Server listening ${port}`)
